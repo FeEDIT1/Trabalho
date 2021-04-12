@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-
+import {createClient} from 'pexels'
 
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -12,20 +12,23 @@ import Button from 'react-bootstrap/Button'
  
 import{FaSearch} from 'react-icons/fa'
 function App(){
+
+  
   const[foto, setFoto] = useState([])
 
 
   function listaFotos(){
-      const listagemFotos = foto.map((foto)=>
-      <img key={foto.id} src={foto.id[4][512]}></img>
-      )
+      const listagemFotos = foto.map((imagem)=>{
+      <img key={imagem.id} src={imagem.src.original}></img>
+      })
+      
   return (
     <> {listagemFotos} </>
   )
   }
 
 
-    async function obtemFoto(foto){
+    async function obterFoto(){
       const apiFoto = process.env.REACT_APP_APIFOTO
       let urlFoto= `https://api.pexels.com/v1/search?query=${foto}`
       
@@ -72,9 +75,9 @@ function App(){
       </Form>
       <br></br>
       <div class="botao">
-      <button onClick={()=> obtemFoto(foto)}>PESQUISAR <FaSearch/></button>
+      <button onClick={()=> obterFoto(foto)}>PESQUISAR <FaSearch/></button>
       <br></br> <br></br>
-      <listaFotos></listaFotos>
+     
 
               </div>
 </div>
@@ -82,7 +85,7 @@ function App(){
 </div>
 </div>
       <br></br> <br></br>
-
+        <listaFotos></listaFotos>
       
     </>
   )
