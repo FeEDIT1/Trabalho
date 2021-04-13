@@ -17,19 +17,19 @@ function App() {
 
   async function obterFoto() {
 
-    const apiFoto = process.env.REACT_APP_APIFOTO //Fazer o esquema da APIKEY no ENV
-    let urlFoto = `https://api.pexels.com/v1/search?query=${filtro}&per_page=100`
+    const apiFoto = process.env.REACT_APP_APIFOTO // Utilizar a API no .env
+    let urlFoto = `https://api.pexels.com/v1/search?query=${filtro}&per_page=100` // url base da API
 
-    await fetch(urlFoto, {
+    await fetch(urlFoto, {    
       headers: {
         Authorization: apiFoto
       }
-    })
+    })        // receber a autorização na API
 
-      .then(response => response.json())
+      .then(response => response.json())    // garantir que a resposta da API virá em json
       .then(data => {
         console.log(data)
-        setFoto(data.photos[Math.floor(Math.random() * (data.photos.length + 1))].src.original)
+        setFoto(data.photos[Math.floor(Math.random() * (data.photos.length + 1))].src.original) // pegar dados da foto 
       })
       .catch(function (error) {
         console.error(`ops, algo deu errado: ${error.message}`)
@@ -49,7 +49,7 @@ function App() {
           </br>
 
           <div class="container h-100">
-            <div class="row h-100 justify-content-center align-items-center"></div>
+            <div class="row h-100 justify-content-center align-items-center"></div>   
             <div class="barra">
               <Form >
                 <FormControl type="text" value={filtro} size="lg" onChange={event => setFiltro(event.target.value)}
