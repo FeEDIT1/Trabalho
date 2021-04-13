@@ -21,7 +21,7 @@ function App() {
       headers: {
         Authorization: apiFoto
       }
-    })        // receber a autorização na API
+    })  // receber a autorização na API
 
       .then(response => response.json())    // garantir que a resposta da API virá em json
       .then(data => {
@@ -36,7 +36,6 @@ function App() {
 
   return (
     <>
-    
       <div class="pagina">
 
 
@@ -53,12 +52,12 @@ function App() {
                 <FormControl type="text" value={filtro} size="lg" onChange={event => setFiltro(event.target.value)}
                   placeholder="Qual imagem você procura?..."></FormControl>
               </Form>
-              <br></br>
-              <div class="botao">
-                <button onClick={() => obterFoto(filtro)}>PESQUISAR <FaSearch /></button>
+              <br></br> 
+              <div class="botao">  {/*Botao responsável pela procura da imagem */}
+                <button onClick={() => obterFoto(filtro)}>PESQUISAR <FaSearch /></button>  
                 <br></br> <br></br>
-                <Jumbotron>
-                  <img src={foto} width="1000px"></img>
+                <Jumbotron> 
+                  <img src={foto} width="1000px"></img> {/* Objeto imagem com a definição da fonte e o tamanho */}
                   
                   </Jumbotron>
 
