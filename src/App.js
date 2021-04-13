@@ -4,7 +4,7 @@ import './App.css'
 
 import FormControl from 'react-bootstrap/FormControl'
 import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 import { FaSearch } from 'react-icons/fa'
 function App() {
@@ -36,6 +36,7 @@ function App() {
 
   return (
     <>
+    
       <div class="pagina">
 
 
@@ -56,7 +57,10 @@ function App() {
               <div class="botao">
                 <button onClick={() => obterFoto(filtro)}>PESQUISAR <FaSearch /></button>
                 <br></br> <br></br>
-                <img src={foto} width="400px"></img>
+                <Jumbotron>
+                  <img src={foto} width="1000px"></img>
+                  
+                  </Jumbotron>
 
               </div>
             </div>
